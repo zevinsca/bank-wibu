@@ -6,6 +6,11 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
 import Image from "next/image";
 
+interface Category {
+  objectId: string;
+  name: string;
+}
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -52,7 +57,7 @@ export default function Header() {
               <button className="">Categories</button>
               {isDropdownOpen && (
                 <ul className="absolute top-full right-0 mt-2 bg-white border rounded shadow-lg py-2 w-56 z-50">
-                  {categories.map((category) => (
+                  {categories.map((category: Category) => (
                     <li key={category.objectId}>
                       <Link
                         href={`/categories/${category.name.toLowerCase()}`}

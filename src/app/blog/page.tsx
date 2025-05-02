@@ -30,9 +30,10 @@ export default function BlogPage() {
       const data = await res.json();
       setArticles(data);
 
-      const unique = Array.from(
+      const unique: string[] = Array.from(
         new Set(data.map((item: ArticleType) => item.category?.name))
       );
+
       setCategories(unique);
     };
 
