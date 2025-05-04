@@ -34,15 +34,12 @@ export default async function Footer() {
 
             <ul className="flex flex-col lg:items-start items-center gap-5 pt-5">
               <li>
-                <Link href="#hero-section" className="font-lato">
+                <Link href="/" className="font-lato">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="#about-me-section">Blog</Link>
-              </li>
-              <li>
-                <Link href="#my-skills-section">Categories</Link>
+                <Link href="/blog">Blog</Link>
               </li>
             </ul>
             <ul className="flex flex-col pt-5 lg:items-start items-center">
