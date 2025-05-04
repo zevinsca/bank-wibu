@@ -1,12 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 type Article = {
   objectId: string;
   title: string;
   content: string;
   image: string;
   excerpt: string;
+  slug: string;
 };
 
 export default function Trending() {
@@ -50,6 +52,12 @@ export default function Trending() {
               <p className="text-lg text-gray-600">
                 {article.content.slice(0, 200)}...
               </p>
+              <Link
+                href={`/blog/${article.slug}`}
+                className="bg-[#fe758c] mb-2 text-white hover:text-black rounded-lg hover:border-1 hover:border-black hover:bg-transparent py-2 px-4 block w-fit mt-3"
+              >
+                Read More
+              </Link>
             </div>
           </div>
         ))}

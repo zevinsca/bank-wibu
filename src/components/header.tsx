@@ -35,26 +35,27 @@ export default function Header() {
   return (
     <header className="">
       {/* Desktop Navigation */}
-      <nav className="md:block hidden pt-2 pb-5 font-lato fixed left-0 right-0 top-0 bg-white z-50">
+      <nav className="md:block hidden pt-2 pb-5 font-lato fixed left-0 right-0 top-0 bg-white z-50 shadow-lg">
         <div className="flex justify-between items-center px-20">
           <div className="relative h-20 w-20">
             <Image fill src="/nav/bank-wibu.png" alt="Bank Wibu Logo" />
           </div>
           <ul className="flex gap-10">
             <li>
-              <Link href="/" className="font-lato">
+              <Link href="/" className="">
                 Home
               </Link>
             </li>
             <li>
               <Link href="/blog">Blog</Link>
             </li>
-            <li
-              className="relative group"
-              onMouseEnter={() => setIsDropdownOpen(true)}
-              onMouseLeave={() => setIsDropdownOpen(false)}
-            >
-              <button className="">Categories</button>
+            <div className="relative">
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className=""
+              >
+                Categories
+              </button>
               {isDropdownOpen && (
                 <ul className="absolute top-full right-0 mt-2 bg-white border rounded shadow-lg py-2 w-56 z-50">
                   {categories.map((category: Category) => (
@@ -62,6 +63,7 @@ export default function Header() {
                       <Link
                         href={`/categories/${category.name.toLowerCase()}`}
                         className="block px-4 py-2 hover:bg-gray-100"
+                        onClick={() => setIsDropdownOpen(false)}
                       >
                         {category.name}
                       </Link>
@@ -69,7 +71,7 @@ export default function Header() {
                   ))}
                 </ul>
               )}
-            </li>
+            </div>
           </ul>
         </div>
       </nav>

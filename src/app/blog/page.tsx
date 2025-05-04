@@ -20,10 +20,12 @@ export default function BlogPage() {
   const [articles, setArticles] = useState<ArticleType[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
 
   // Fetch articles
   useEffect(() => {
     const fetchArticles = async () => {
+      setLoading(true); // Start loading
       const res = await fetch(
         "https://sacredreceipt-us.backendless.app/api/data/Articles?loadRelations=category"
       );
@@ -35,6 +37,7 @@ export default function BlogPage() {
       );
 
       setCategories(unique);
+      setLoading(false);
     };
 
     fetchArticles();
@@ -77,30 +80,40 @@ export default function BlogPage() {
             </div>
           ))}
         </div>
-        <div className="grid col-span-3 grid-cols-3 max-w-screen gap-x-4 gap-y-8">
-          {filteredArticles.map((article: ArticleType) => (
-            <article key={article.slug} className="bg-white shadow-lg">
-              <div className="relative h-56 w-full">
-                <Image
-                  src={article.image}
-                  alt="Article Image"
-                  fill
-                  className="object-cover rounded-t-2xl"
-                />
-              </div>
-              <div className="p-4 h-90 flex flex-col">
-                {/* <span>{article.category.name}</span> */}
-                <h2 className="text-base font-semibold ">{article.title}</h2>
-                <p className="text-sm mt-2">{article.excerpt}</p>
-                <Link
-                  href={`/blog/${article.slug}`}
-                  className="bg-[#fe758c] mb-2 text-white hover:text-black rounded-lg hover:border-1 hover:border-black hover:bg-transparent py-2 px-4 block w-fit mt-auto"
-                >
-                  Read More
-                </Link>
-              </div>
-            </article>
-          ))}
+        <div className="col-span-3">
+          {loading ? (
+            <p className="text-center text-gray-500">Loading articles...</p> // Loading message
+          ) : filteredArticles.length === 0 ? (
+            <p className="text-center text-gray-500">No results found.</p>
+          ) : (
+            <div className="grid grid-cols-3 max-w-screen gap-x-4 gap-y-8">
+              {filteredArticles.map((article: ArticleType) => (
+                <article key={article.slug} className="bg-white shadow-lg">
+                  <div className="relative h-56 w-full">
+                    <Image
+                      src={article.image}
+                      alt="Article Image"
+                      fill
+                      className="object-cover rounded-t-2xl"
+                    />
+                  </div>
+                  <div className="p-4 h-90 flex flex-col">
+                    {/* <span>{article.category.name}</span> */}
+                    <h2 className="text-base font-semibold ">
+                      {article.title}
+                    </h2>
+                    <p className="text-sm mt-2">{article.excerpt}</p>
+                    <Link
+                      href={`/blog/${article.slug}`}
+                      className="bg-[#fe758c] mb-2 text-white hover:text-black rounded-lg hover:border-1 hover:border-black hover:bg-transparent py-2 px-4 block w-fit mt-auto"
+                    >
+                      Read More
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
