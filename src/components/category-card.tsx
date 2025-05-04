@@ -26,7 +26,7 @@ export default function CategoryCard(props: {
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4 group ">
           {/* Background Overlay */}
-          <div className="absolute inset-0 bg-black transition-opacity duration-300 opacity-60 group-hover:opacity-50 group-hover:bg-[#fe758c] z-0 rounded-2xl"></div>
+          <div className="absolute inset-0 bg-black transition-opacity duration-300 opacity-60 group-hover:opacity-50 group-hover:bg-[#fe758c] active:bg-[#fe758c] z-0 rounded-2xl"></div>
 
           {/* Always-visible Text */}
           <p className="text-3xl font-bold z-10 opacity-100">{props.title}</p>
