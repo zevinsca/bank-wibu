@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";s
 
 export default function CategorySection() {
   return (
@@ -6,7 +6,7 @@ export default function CategorySection() {
       className="mx-auto container min-h-screen lg:pt-44 pt-28"
       id="category-section"
     >
-      <div>
+      {/* <div>
         <Image />
       </div>
       <div>
@@ -26,7 +26,7 @@ export default function CategorySection() {
       </div>
       <div>
         <Image />
-      </div>
+      </div> */}
     </section>
   );
 }
