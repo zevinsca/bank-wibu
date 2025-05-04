@@ -59,7 +59,9 @@ export default function CategoryPage() {
         {decodedCategoryName.toUpperCase()}
       </h2>
       {categoryDescription && (
-        <p className="mt-2 text-gray-600">{categoryDescription}</p>
+        <p className="mt-2 lg:text-base text-sm text-gray-600">
+          {categoryDescription}
+        </p>
       )}
       <div className="mt-10">
         {loading ? (
@@ -69,7 +71,7 @@ export default function CategoryPage() {
             No results found in this category.
           </p>
         ) : (
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid lg:grid-cols-3 gap-4">
             {articles.map((article) => (
               <article key={article.slug} className="bg-white shadow-lg">
                 <div className="relative h-56 w-full">
@@ -80,12 +82,12 @@ export default function CategoryPage() {
                     className="object-cover rounded-t-2xl"
                   />
                 </div>
-                <div className="p-4 h-90 flex flex-col">
-                  <h2 className="text-base font-semibold">{article.title}</h2>
+                <div className="p-4 lg:h-90 h-full flex flex-col">
+                  <h2 className="text-base font-semibold ">{article.title}</h2>
                   <p className="text-sm mt-2">{article.excerpt}</p>
                   <Link
                     href={`/blog/${article.slug}`}
-                    className="bg-[#fe758c] mb-2 text-white hover:text-black rounded-lg hover:border-1 hover:border-black hover:bg-transparent py-2 px-4 block w-fit mt-auto"
+                    className="bg-[#fe758c] mb-2 text-white hover:text-black rounded-lg hover:border-1 hover:border-black hover:bg-transparent py-2 px-4 block w-fit lg:mt-auto mt-3"
                   >
                     Read More
                   </Link>

@@ -14,13 +14,13 @@ export default async function BlogDetailPage({
   const [data] = await res.json();
 
   return (
-    <main className="py-8 px-8 text-black pt-32">
-      <section className="max-w-[1100px] mx-auto w-full px-16 text-justify">
-        <div className="relative w-full h-[400px] flex justify-center items-center text-justify">
-          <div className="relative w-96 h-full">
+    <div className="py-8 px-8 text-black pt-32">
+      <section className="lg:max-w-[1100px] max-w-screen mx-auto w-full lg:px-16 text-justify pb-3">
+        <div className="relative w-full lg:h-[400px] h-[300px] flex justify-center items-center text-justify">
+          <div className="relative lg:w-96 w-full h-full">
             <Image
               src={data.image}
-              alt="Hero Image"
+              alt={data.title}
               fill
               className="object-contain"
             />
@@ -37,6 +37,6 @@ export default async function BlogDetailPage({
         <h2 className="mt-2 text-4xl font-extrabold">{data.title}</h2>
         <p className="mt-4">{data.content}</p>
       </section>
-    </main>
+    </div>
   );
 }

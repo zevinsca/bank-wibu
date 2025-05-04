@@ -38,11 +38,13 @@ export default function Latest() {
 
   return (
     <section className="py-8 mx-auto container">
-      <h2 className="text-2xl font-bold mb-6">Latest Articles</h2>
-      <div className="grid lg:grid-cols-3 gap-8">
+      <h2 className="text-2xl font-bold mb-6 lg:text-left text-center">
+        Latest Articles
+      </h2>
+      <div className="grid lg:grid-cols-3 lg:gap-8 gap-3 mx-3">
         {articles.slice(0, 6).map((article) => (
           <div key={article.objectId} className="shadow-lg">
-            <div className="relative h-96 w-full ">
+            <div className="relative lg:h-96 h-40 w-full ">
               {article.image && (
                 <Image
                   src={article.image}
@@ -52,12 +54,16 @@ export default function Latest() {
                 />
               )}
             </div>
-            <div className="p-4 h-72 flex flex-col">
-              <h3 className="text-lg font-semibold mb-2 ">{article.title}</h3>
-              <p className="text-sm text-gray-600">{article.excerpt}</p>
+            <div className="p-4 lg:h-72 flex flex-col justify-center">
+              <h3 className="lg:text-lg font-semibold mb-2 text-sm">
+                {article.title}
+              </h3>
+              <p className="lg:text-sm text-xs text-gray-600">
+                {article.excerpt}
+              </p>
               <Link
                 href={`/blog/${article.slug}`}
-                className="bg-[#fe758c] mb-2 text-white hover:text-black rounded-lg hover:border-1 hover:border-black hover:bg-transparent py-2 px-4 block w-fit mt-auto"
+                className="bg-[#fe758c] mb-2 text-white hover:text-black rounded-lg hover:border-1 hover:border-black hover:bg-transparent py-2 px-4 block w-fit lg:mt-auto mt-3"
               >
                 Read More
               </Link>

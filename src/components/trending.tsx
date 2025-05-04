@@ -32,12 +32,17 @@ export default function Trending() {
     return <p className="text-center py-4">Loading trending articles...</p>;
 
   return (
-    <section className="mx-auto container">
-      <h2 className="text-2xl font-bold mb-6">Trending Articles</h2>
-      <div className="mb-10">
+    <section className="mx-auto container pt-5 lg:pt-0">
+      <h2 className="text-2xl font-bold mb-6 lg:text-left text-center">
+        Trending Articles
+      </h2>
+      <div className="mb-0">
         {articles.slice(0, 1).map((article) => (
-          <div key={article.objectId} className="px-5 grid grid-cols-5 gap-8">
-            <div className="relative h-96 w-full col-span-3 ">
+          <div
+            key={article.objectId}
+            className="px-5 grid lg:grid-cols-5 gap-8"
+          >
+            <div className="relative h-96 w-full lg:col-span-3 ">
               {article.image && (
                 <Image
                   src={article.image}
@@ -47,9 +52,11 @@ export default function Trending() {
                 />
               )}
             </div>
-            <div className="col-span-2 flex flex-col justify-center">
-              <h3 className="text-2xl font-semibold mb-2">{article.title}</h3>
-              <p className="text-lg text-gray-600">
+            <div className="lg:col-span-2 flex flex-col justify-center">
+              <h3 className="lg:text-2xl text-xl font-semibold mb-2">
+                {article.title}
+              </h3>
+              <p className="lg:text-lg text-sm text-gray-600 text-justify lg:text-left ">
                 {article.content.slice(0, 200)}...
               </p>
               <Link

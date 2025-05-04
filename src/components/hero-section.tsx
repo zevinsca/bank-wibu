@@ -3,10 +3,10 @@ import Image from "next/image";
 export default function HeroSection() {
   return (
     <section
-      className="mx-auto container min-h-screen lg:pt-44 pt-28"
+      className="mx-auto container lg:min-h-screen min-h-px lg:pt-44 pt-28 lg:px-0 px-3 "
       id="hero-section"
     >
-      <div className="relative h-[30vh] lg:h-[70vh] w-full rounded-4xl overflow-hidden">
+      <div className="relative h-[30vh] lg:h-[70vh] w-full lg:rounded-4xl rounded-xl overflow-hidden">
         <Image
           fill
           className="object-cover "
